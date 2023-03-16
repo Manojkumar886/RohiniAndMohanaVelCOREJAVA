@@ -1,2 +1,10 @@
-package FundamentalJava;public class Sample {
+package FundamentalJava;
+
+public class Sample
+{
+    public static void main(String[] args)
+    {
+        System.out.println("Welcome to Java Stack Course..!");
+    }
+
 }
