@@ -4,6 +4,7 @@ public class LocalVariable
 {
     public static void main(String[] args)
     {
+        int a=10;//instance variable
         //object creation
 //        classname objname=new classname();
         LocalVariable obj1=new LocalVariable();//accessed by local variable or user defined method
