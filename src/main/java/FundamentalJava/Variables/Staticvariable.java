@@ -9,6 +9,7 @@ public class Staticvariable
 
     public void Execution()
     {
+        System.out.println(Balance);
         System.out.println("Method is called");
         System.out.println(" in this balance called by user defined metho"+Balance);
     }
