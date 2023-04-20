@@ -23,8 +23,6 @@ public class UpdatingAnArray
 //        {
 //            System.out.print(bill+",");
 //        }
-
-
 //        Scanner scan=new Scanner(System.in);
 //        System.out.println("which pos of value you want");
 //        int pos=scan.nextInt();
