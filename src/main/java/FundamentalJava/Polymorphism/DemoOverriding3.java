@@ -23,6 +23,9 @@ public class DemoOverriding3 extends  DemoOverriding2
 
     public static void main(String[] args)
     {
+//        float ab=9.8f;
+//        DemoOverriding3 ride3=new DemoOverriding3();
+//        ride3.Calculation(ab,800);0
         DemoOverRiding1 ride=new DemoOverriding2();//upcasting
         System.out.println(ride.Calculation(35,10));//350
 
