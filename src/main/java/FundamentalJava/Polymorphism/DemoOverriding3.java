@@ -3,9 +3,11 @@ package FundamentalJava.Polymorphism;
 public class DemoOverriding3 extends  DemoOverriding2
 {
 //    upcasting=object created by parent class ,referenced by child class.
+
+//    parentclassname objname=new Referencedclassname();
     public int Calculation(int AValue,int Bvalue)
     {
-        int divition=AValue*Bvalue;
+        int divition=AValue+Bvalue;
         return divition;
     }
     public int Calculation(float Avalue,int Bvalue)

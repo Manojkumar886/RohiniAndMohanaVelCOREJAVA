@@ -36,6 +36,17 @@ public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforam
                 case 2:
                     System.out.println("List all you values ");
                     execution.listallcostomerdetails();
+                    break;
+                case 3:
+                    System.out.println("Which type of studentname details you are updated");
+                    String updatenames=scan.next();
+                    execution.updatecustomerdetail(updatenames);
+                    break;
+                case 4:
+                    System.out.println("Which name of array you delete in your object");
+                    String name= scan.next();
+                    execution.deletecustomerdetail(name);
+                    break;
 
             }
 
@@ -74,13 +85,46 @@ public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforam
     @Override
     public String updatecustomerdetail(String Studentname)
     {
-        return null;
+        Scanner scan=new Scanner(System.in);
+
+        for(int index=0;index< studentdetails.length;index++)
+        {
+            if(studentdetails[index].getStudentName().equalsIgnoreCase(Studentname))
+            {
+                System.out.println(studentdetails[index]);
+                System.out.println("which field data you want update");
+                String usage=scan.next();
+                switch (usage)
+                {
+                    case "studentname":
+                        System.out.println("your are choosen student name \n please tell us new value you are replaced");
+                        String newvalue=scan.next();
+                        studentdetails[index].setStudentName(newvalue);
+                        return studentdetails[index].getStudentName()+" has been updated";
+                    case "Hours":
+                        System.out.println("you choosen hours value\n please tell us updated hours value");
+                        double newvalue1=scan.nextDouble();
+                        studentdetails[index].setHours(newvalue1);
+                        return studentdetails[index].getStudentName()+" has updated";
+                }
+            }
+        }
+        return Studentname;
     }
 
     @Override
     public String deletecustomerdetail(String Studentname)
     {
-        return null;
+        for(int index=0;index<studentdetails.length;index++)
+        {
+            if(studentdetails[index].getStudentName().equalsIgnoreCase(Studentname))
+            {
+                studentdetails[index]=null;
+                System.out.println(Studentname+" has been deleted successfully");
+                break;
+            }
+        }
+        return Studentname+" has not been deleted";
     }
 
     @Override
