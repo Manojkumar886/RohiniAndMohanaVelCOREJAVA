@@ -11,5 +11,7 @@ public interface ZealousCustomerDetailsPerforamance
 
     public String deletecustomerdetail(String Studentname);
 
-    public float sortingcustomerdetail(float pricevalue);
+    public void sortingcustomerdetail();
+
+    public String Searchcustomerdetails(String stduentname);
 }

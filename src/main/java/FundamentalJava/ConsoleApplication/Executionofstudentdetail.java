@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforamance
 {
-    ZealousCustomerDetails [] studentdetails=new   ZealousCustomerDetails[10];
+    ZealousCustomerDetails [] studentdetails=new   ZealousCustomerDetails[3];
 //        {
 //            System.out.println(studentdetails[i]);
 //        }ZealousCustomerDetails[10];//Array Declaration
@@ -14,8 +14,6 @@ public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforam
         studentdetails[0]=new ZealousCustomerDetails("Manojkumar",1.30,9789355930l,"Java Full Stack developer",28000.0f,"Razak");
         studentdetails[1]=new ZealousCustomerDetails("Saipavi",1.00,782798788722l,"Python Stack dveeloper",20000.0f,"Razak");
     }
-
-
     public static void main(String[] args)
     {
 
@@ -24,7 +22,7 @@ public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforam
         do
         {
             System.out.println("Welcome to Zealous Academy");
-            System.out.println("which process you want work this"+"\n1.AddnewStudentdetails\n2.Listallstudentdetails\n3.updatestudentdetails\n4.deletecustomerdetail\n5.sortingstudentdetails");
+            System.out.println("which process you want work this"+"\n1.AddnewStudentdetails\n2.Listallstudentdetails\n3.updatestudentdetails\n4.deletecustomerdetail\n5.sortingstudentdetails\n6.searchanstduentname");
             int usage=scan.nextInt();
             switch (usage)
             {
@@ -47,6 +45,16 @@ public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforam
                     String name= scan.next();
                     execution.deletecustomerdetail(name);
                     break;
+                case 5:
+                    execution.sortingcustomerdetail();
+                    execution.listallcostomerdetails();
+                    break;
+                case 6:
+                    System.out.println("which studnetname details you are seraching..");
+                    String studentname=scan.next();
+                    execution.Searchcustomerdetails(studentname);
+
+                default:return;
 
             }
 
@@ -100,7 +108,7 @@ public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforam
                         System.out.println("your are choosen student name \n please tell us new value you are replaced");
                         String newvalue=scan.next();
                         studentdetails[index].setStudentName(newvalue);
-                        return studentdetails[index].getStudentName()+" has been updated";
+                        return null;
                     case "Hours":
                         System.out.println("you choosen hours value\n please tell us updated hours value");
                         double newvalue1=scan.nextDouble();
@@ -128,8 +136,49 @@ public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforam
     }
 
     @Override
-    public float sortingcustomerdetail(float pricevalue)
+    public void sortingcustomerdetail()
     {
-        return 0;
+        Scanner scan=new Scanner(System.in);
+        ZealousCustomerDetails csdetails=null;
+        System.out.println("which field values you are sorting");
+        String fieldname=scan.next();
+        for(int i=0;i<studentdetails.length;i++)
+        {
+            for(int j=i+1;j< studentdetails.length;j++)
+            {
+                if(fieldname.equalsIgnoreCase("studentname"))
+                {
+                    if(studentdetails[i].getStudentName().compareTo(studentdetails[j].getStudentName())>0)
+                    {
+                        csdetails=studentdetails[i];
+                        studentdetails[i]=studentdetails[j];
+                        studentdetails[j]=csdetails;
+                    }
+                } else if (fieldname.equalsIgnoreCase("StudentMobileno"))
+                {
+                    if(studentdetails[i].getStudentMobileno()>studentdetails[j].getStudentMobileno())
+                    {
+                        csdetails=studentdetails[i];
+                        studentdetails[i]=studentdetails[j];
+                        studentdetails[j]=csdetails;
+                    }
+                }
+            }
+        }
+
+    }
+
+    @Override
+    public String Searchcustomerdetails(String stduentname)
+    {
+        for(int i=0;i< studentdetails.length;i++)
+        {
+            if(studentdetails[i].getStudentName().equalsIgnoreCase(stduentname))
+            {
+                System.out.println(studentdetails[i]);
+                break;
+            }
+        }
+        return stduentname;
     }
 }
