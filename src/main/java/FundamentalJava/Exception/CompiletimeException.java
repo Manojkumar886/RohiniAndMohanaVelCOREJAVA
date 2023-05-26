@@ -2,6 +2,8 @@ package FundamentalJava.Exception;
 
 import java.io.IOException;
 import  java.lang.Runtime;
+import java.sql.SQLException;
+
 public class CompiletimeException
 {
     public static void main(String[] args)
