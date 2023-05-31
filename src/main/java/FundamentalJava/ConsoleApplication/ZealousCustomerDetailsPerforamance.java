@@ -3,7 +3,7 @@ package FundamentalJava.ConsoleApplication;
 public interface ZealousCustomerDetailsPerforamance
 {
 
-    public String addcustomerdetail(ZealousCustomerDetails zealous);
+    public String addcustomerdetail(ZealousCustomerDetails zealous) throws ZealousException;
 
     public  void listallcostomerdetails();//no implement methods
 

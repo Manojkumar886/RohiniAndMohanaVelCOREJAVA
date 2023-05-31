@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforamance
 {
-    ZealousCustomerDetails [] studentdetails=new   ZealousCustomerDetails[3];
+    ZealousCustomerDetails [] studentdetails=new   ZealousCustomerDetails[2];
 //        {
 //            System.out.println(studentdetails[i]);
 //        }ZealousCustomerDetails[10];//Array Declaration
@@ -14,8 +14,7 @@ public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforam
         studentdetails[0]=new ZealousCustomerDetails("Manojkumar",1.30,9789355930l,"Java Full Stack developer",28000.0f,"Razak");
         studentdetails[1]=new ZealousCustomerDetails("Saipavi",1.00,782798788722l,"Python Stack dveeloper",20000.0f,"Razak");
     }
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws ZealousException {
 
         Executionofstudentdetail execution=new Executionofstudentdetail();//Constructor
         Scanner scan=new Scanner(System.in);
@@ -29,7 +28,7 @@ public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforam
                 case 1:
                     System.out.println("adding new student details"+"\nStudentname\tHours\tStudentMobileno\tCoursedetail\tprice\tInchangeName");
                     ZealousCustomerDetails customer1=new ZealousCustomerDetails(scan.next(), scan.nextDouble(), scan.nextLong(),scan.next(), scan.nextFloat(), scan.next());
-                    execution.addcustomerdetail(customer1);
+                    System.out.println(execution.addcustomerdetail(customer1));
                     break;
                 case 2:
                     System.out.println("List all you values ");
@@ -68,16 +67,32 @@ public class Executionofstudentdetail  implements ZealousCustomerDetailsPerforam
     @Override
     public String addcustomerdetail(ZealousCustomerDetails zealous)
     {
-        for(int pos=0;pos<studentdetails.length;pos++)
+        Scanner scan=new Scanner(System.in);
+        try
         {
-            if(studentdetails[pos]==null)
+            for(int pos=0;pos<studentdetails.length;pos++)
             {
-                studentdetails[pos]=zealous;
-                System.out.println(zealous.getStudentName()+" has been added in our studentdetails");
-                break;
+                if(studentdetails[pos]==null)
+                {
+                    studentdetails[pos]=zealous;
+                    return zealous.getStudentName()+" has been added in our studentdetails";
+                }
             }
+            throw new ZealousException();//user defined exception
         }
-        return zealous.getStudentName()+" has not been added ";
+        catch (ZealousException ze)
+        {
+            System.out.println(ze+" my memory is full,so any one value you deleted that time added a new values");
+            for(ZealousCustomerDetails zea:studentdetails)
+            {
+                System.out.println(zea.getStudentName());
+            }
+            System.out.println("which name you want delete");
+            String studname=scan.next();
+            deletecustomerdetail(studname);//delete a one value
+            addcustomerdetail(zealous);
+        }
+        return zealous.getStudentName()+" has  been added -successfully";
     }
 
     @Override
