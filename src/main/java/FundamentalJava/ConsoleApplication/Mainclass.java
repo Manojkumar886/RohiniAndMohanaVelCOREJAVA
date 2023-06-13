@@ -4,7 +4,9 @@ public class Mainclass
 {
     public static void main(String[] args)
     {
-        Executionofstudentdetail execute=new Executionofstudentdetail();
+//        Executionofstudentdetail execute=new Executionofstudentdetail();
+
+        CollectionProcess execute=new CollectionProcess();
 
         Thread th1=new Thread(execute,"Manojkumar");
         Thread th2=new Thread(execute,"Tamil");

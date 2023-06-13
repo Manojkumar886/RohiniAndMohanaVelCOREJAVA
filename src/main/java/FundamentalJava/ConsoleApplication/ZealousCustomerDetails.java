@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data//getter and setter and tostring
 @NoArgsConstructor//Default Constructor
 @AllArgsConstructor//Parameterized Constructor
-public class ZealousCustomerDetails
+public class ZealousCustomerDetails implements Comparable<ZealousCustomerDetails>
 {
     private String StudentName;
     private double Hours;
@@ -20,4 +20,8 @@ public class ZealousCustomerDetails
     private String inchargeName;
 
 
+    @Override
+    public int compareTo(ZealousCustomerDetails o) {
+        return this.getStudentName().compareTo(o.getStudentName());
+    }
 }
