@@ -6,20 +6,83 @@ import java.util.TreeSet;
 
 public class CollectionProcess implements ZealousCustomerDetailsPerforamance,Runnable
 {
-    TreeSet<ZealousCustomerDetails> zealous=new TreeSet<ZealousCustomerDetails>();
-    public CollectionProcess()
+    TreeSet<ZealousCustomerDetails>  zealous=new TreeSet<ZealousCustomerDetails>();
+
+    public  CollectionProcess()
     {
-        zealous.add(new ZealousCustomerDetails("Tamilarasan",2.00,9789355930l,"Java Full Stack Developer",30000.0f,"RazakSR"));
-        zealous.add(new ZealousCustomerDetails("Mohanavel",1.00,9345755930l,"C++ Full Stack Developer",30000.0f,"Annamalai"));
-        zealous.add(new ZealousCustomerDetails("Manoj",1.30,8909355930l,"Python Full Stack Developer",30000.0f,"Manikandan"));
+        zealous.add(new ZealousCustomerDetails("Manojkumar",2.00,9789355930l,"Java Stack",30000.0f,"Razak"));
     }
 
-    synchronized public void run() {
+    @Override
+    public String addcustomerdetail(ZealousCustomerDetails zealous1)
+    {
+        zealous.add(zealous1);
+        return zealous1.getStudentName()+" has been added successfully";
+    }
+
+    @Override
+    public void listallcostomerdetails()
+    {
+        Iterator<ZealousCustomerDetails> it= zealous.iterator();
+        while (it.hasNext())
+        {
+            System.out.println(it.next());
+        }
+    }
+
+    @Override
+    public String updatecustomerdetail(String Studentname)
+    {
+//        Scanner scan=new Scanner(System.in);
+//
+//        for(int index=0;index< zealous.size();index++)
+//        {
+//            System.out.println(zealous);
+//            if(zealous.equals(Studentname))
+//            {
+//                System.out.println(studentdetails[index]);
+//                System.out.println("which field data you want update");
+//                String usage=scan.next();
+//                switch (usage)
+//                {
+//                    case "studentname":
+//                        System.out.println("your are choosen student name \n please tell us new value you are replaced");
+//                        String newvalue=scan.next();
+//                        studentdetails[index].setStudentName(newvalue);
+//                        return null;
+//                    case "Hours":
+//                        System.out.println("you choosen hours value\n please tell us updated hours value");
+//                        double newvalue1=scan.nextDouble();
+//                        studentdetails[index].setHours(newvalue1);
+//                        return studentdetails[index].getStudentName()+" has updated";
+//                }
+//            }
+//        }
+        return null;
+    }
+
+    @Override
+    public String deletecustomerdetail(String Studentname) {
+        return null;
+    }
+
+    @Override
+    public void sortingcustomerdetail() {
+
+    }
+
+    @Override
+    public String Searchcustomerdetails(String stduentname) {
+        return null;
+    }
+
+    @Override
+     synchronized public void run()
+    {
+        System.out.println("Welcome to Zealous "+Thread.currentThread().getName());
+        CollectionProcess execution=new CollectionProcess();
+        Scanner scan=new Scanner(System.in);
         do {
-            System.out.println("Welcome to Zealous " + Thread.currentThread().getName());
-            CollectionProcess execution = new CollectionProcess();
-            Scanner scan = new Scanner(System.in);
-            System.out.println("Welcome to Zealous Academy");
             System.out.println("which process you want work this" + "\n1.AddnewStudentdetails\n2.Listallstudentdetails\n3.updatestudentdetails\n4.deletecustomerdetail\n5.sortingstudentdetails\n6.searchanstduentname");
             int usage = scan.nextInt();
             switch (usage) {
@@ -50,46 +113,10 @@ public class CollectionProcess implements ZealousCustomerDetailsPerforamance,Run
                     System.out.println("which studnetname details you are seraching..");
                     String studentname = scan.next();
                     execution.Searchcustomerdetails(studentname);
+
                 default:
                     return;
             }
-        }while (true) ;
-    }
-
-    @Override
-    public String addcustomerdetail(ZealousCustomerDetails customer)
-    {
-        zealous.add(customer);
-        return customer.getStudentName()+"\t student joined us our company";
-    }
-
-    @Override
-    public void listallcostomerdetails()
-    {
-        Iterator<ZealousCustomerDetails> it= zealous.iterator();
-        while(it.hasNext())
-        {
-            System.out.println(it.next());
-        }
-    }
-
-    @Override
-    public String updatecustomerdetail(String Studentname) {
-        return null;
-    }
-
-    @Override
-    public String deletecustomerdetail(String Studentname) {
-        return null;
-    }
-
-    @Override
-    public void sortingcustomerdetail() {
-
-    }
-
-    @Override
-    public String Searchcustomerdetails(String stduentname) {
-        return null;
+        }while (true);
     }
 }
