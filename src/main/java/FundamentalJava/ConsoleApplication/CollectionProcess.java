@@ -1,15 +1,15 @@
 package FundamentalJava.ConsoleApplication;
 
-import java.util.Iterator;
-import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.*;
 
 public class CollectionProcess implements ZealousCustomerDetailsPerforamance,Runnable
 {
-    TreeSet<ZealousCustomerDetails>  zealous=new TreeSet<ZealousCustomerDetails>();
+    ArrayList<ZealousCustomerDetails> zealous=new ArrayList<ZealousCustomerDetails>();
 
     public  CollectionProcess()
     {
+        zealous.add(new ZealousCustomerDetails("Aarthi",1.00,8978355930l,"JavScript Stack",28000.0f,"Manoj"));
+        zealous.add(new ZealousCustomerDetails("Pavitha",2.30,9767355930l,"Python Stack",25000.0f,"Annamalai"));
         zealous.add(new ZealousCustomerDetails("Manojkumar",2.00,9789355930l,"Java Stack",30000.0f,"Razak"));
     }
 
@@ -33,42 +33,63 @@ public class CollectionProcess implements ZealousCustomerDetailsPerforamance,Run
     @Override
     public String updatecustomerdetail(String Studentname)
     {
-//        Scanner scan=new Scanner(System.in);
-//
-//        for(int index=0;index< zealous.size();index++)
-//        {
-//            System.out.println(zealous);
-//            if(zealous.equals(Studentname))
-//            {
-//                System.out.println(studentdetails[index]);
-//                System.out.println("which field data you want update");
-//                String usage=scan.next();
-//                switch (usage)
-//                {
-//                    case "studentname":
-//                        System.out.println("your are choosen student name \n please tell us new value you are replaced");
-//                        String newvalue=scan.next();
-//                        studentdetails[index].setStudentName(newvalue);
-//                        return null;
-//                    case "Hours":
-//                        System.out.println("you choosen hours value\n please tell us updated hours value");
-//                        double newvalue1=scan.nextDouble();
-//                        studentdetails[index].setHours(newvalue1);
-//                        return studentdetails[index].getStudentName()+" has updated";
-//                }
-//            }
-//        }
-        return null;
+        try
+        {
+            Scanner scan=new Scanner(System.in);
+            for(int i=0;i< zealous.size();i++)
+            {
+                if(zealous.get(i).getStudentName().equalsIgnoreCase(Studentname))
+                {
+                    System.out.println("Please tell us which field you want Update");
+                    String Whatfield=scan.next();
+                    switch (Whatfield)
+                    {
+                        case "studentname":
+                            System.out.println("your are choosen student name \n please tell us new value you are replaced");
+                            String newvalue=scan.next();
+                            zealous.get(i).setStudentName(newvalue);
+                            System.out.println(Studentname+" has student updated ");
+                        case "Hours":
+                            System.out.println("you choosen hours value\n please tell us updated hours value");
+                            double newvalue1=scan.nextDouble();
+                            zealous.get(i).setHours(newvalue1);
+                    }
+                }
+            }
+            throw new ZealousException();
+        }
+        catch (ZealousException Ze)
+        {
+            Scanner scan=new Scanner(System.in);
+            System.out.println(Ze+"Keyword to update not matched ,please select any below");
+            System.out.println("keyword /referenced  to update should be  studentname/Hours/studentmobileno/price");
+            for(ZealousCustomerDetails zea:zealous)
+            {
+                System.out.println(zea.getStudentName());
+            }
+            updatecustomerdetail(scan.next());
+        }
+        return Studentname+"has been updated successfully";
     }
 
     @Override
-    public String deletecustomerdetail(String Studentname) {
-        return null;
+    public String deletecustomerdetail(String Studentname)
+    {
+        for(int i=0;i< zealous.size();i++)
+        {
+            if(zealous.get(i).getStudentName().equalsIgnoreCase(Studentname))
+            {
+                zealous.remove(zealous.get(i));
+                System.out.println(Studentname+" has been deleted in successfully");
+            }
+        }
+        return Studentname;
     }
 
     @Override
-    public void sortingcustomerdetail() {
-
+    public void sortingcustomerdetail()
+    {
+        Collections.sort(zealous);
     }
 
     @Override
@@ -98,7 +119,7 @@ public class CollectionProcess implements ZealousCustomerDetailsPerforamance,Run
                 case 3:
                     System.out.println("Which type of studentname details you are updated");
                     String updatenames = scan.next();
-                    execution.updatecustomerdetail(updatenames);
+                    System.out.println(execution.updatecustomerdetail(updatenames));
                     break;
                 case 4:
                     System.out.println("Which name of array you delete in your object");
