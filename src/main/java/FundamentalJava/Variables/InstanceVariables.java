@@ -4,6 +4,7 @@ public class InstanceVariables
 {
     public static void main(String[] args)
     {
+//        System.out.println("sample");
         int delta=90+67;//Instance variable
         System.out.println("delta value is "+delta);
         float cosma=delta;

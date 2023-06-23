@@ -49,14 +49,19 @@ public class CollectionProcess implements ZealousCustomerDetailsPerforamance,Run
                             String newvalue=scan.next();
                             zealous.get(i).setStudentName(newvalue);
                             System.out.println(Studentname+" has student updated ");
+                            break;
                         case "Hours":
                             System.out.println("you choosen hours value\n please tell us updated hours value");
                             double newvalue1=scan.nextDouble();
                             zealous.get(i).setHours(newvalue1);
+                            break;
+                        default:
+                        throw new ZealousException();
                     }
+
                 }
+
             }
-            throw new ZealousException();
         }
         catch (ZealousException Ze)
         {

@@ -6,7 +6,7 @@ public class Mainclass
     {
 //        Executionofstudentdetail execute=new Executionofstudentdetail();
 
-        CollectionProcess execute=new CollectionProcess();
+        FileImplementation execute=new FileImplementation();
 
         Thread th1=new Thread(execute,"Manojkumar");
         Thread th2=new Thread(execute,"Tamil");

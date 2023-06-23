@@ -1,9 +1,11 @@
 package FundamentalJava.ConsoleApplication;
 
+import java.io.IOException;
+
 public interface ZealousCustomerDetailsPerforamance
 {
 
-    public String addcustomerdetail(ZealousCustomerDetails zealous) throws ZealousException;
+    public String addcustomerdetail(ZealousCustomerDetails zealous) throws ZealousException, IOException, ClassNotFoundException;
 
     public  void listallcostomerdetails();//no implement methods
 
