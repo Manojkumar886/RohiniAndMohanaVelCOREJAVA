@@ -47,7 +47,7 @@ public class FileImplementation implements ZealousCustomerDetailsPerforamance ,R
             studentdetails.add(zealous);
             writing();
         }
-        catch (EOFException eofException)
+        catch (EOFException eofException)//end of file
         {
             System.out.println(eofException);
             studentdetails.add(zealous);
