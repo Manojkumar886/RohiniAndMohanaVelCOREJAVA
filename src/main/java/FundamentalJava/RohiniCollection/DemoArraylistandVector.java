@@ -1,6 +1,7 @@
 package FundamentalJava.RohiniCollection;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Vector;
 
 public class DemoArraylistandVector
@@ -34,6 +35,16 @@ public class DemoArraylistandVector
 
         System.out.println("my arrayList Values:"+object);
         System.out.println("my vector values :"+object1);
+
+
+        Iterator<ArrayList> it=object1.iterator();
+
+        while(it.hasNext())
+        {
+            System.out.println(it.next());
+        }
+
+
 
     }
 }
